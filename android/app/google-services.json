@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "355346803002",
+    "project_id": "lojaflutter-304c1",
+    "storage_bucket": "lojaflutter-304c1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:355346803002:android:657a3c357cf7ed5343c803",
+        "android_client_info": {
+          "package_name": "com.domingos.loja_virtual"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "355346803002-39bue4ulhpejcn9bcdg84fp0gn1vqlcs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAUZZ8LGTkmzZSLPZUsiRjIWFYY31AkVg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "355346803002-39bue4ulhpejcn9bcdg84fp0gn1vqlcs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
