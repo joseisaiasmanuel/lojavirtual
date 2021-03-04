@@ -19,7 +19,7 @@ class UserModel extends Model {
   void addListener(VoidCallback listener) {
     super.addListener(listener);
     _loadCurrentUser();
-  } //Crian conta
+  } //cadastrar conta
 
   void signUp({
     @required Map<String, dynamic> userData,
@@ -47,6 +47,7 @@ class UserModel extends Model {
     });
   }
 
+  // fazer login
   void signIn({
     @required String email,
     @required String pass,
