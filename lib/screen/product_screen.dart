@@ -4,7 +4,7 @@ import 'package:loja_virtual/data/cart_product.dart';
 import 'package:loja_virtual/data/products_data.dart';
 import 'package:loja_virtual/models/cart_model.dart';
 import 'package:loja_virtual/models/user_model.dart';
-
+import 'cart_screen.dart';
 import 'login_screen.dart';
 
 class ProductScree extends StatefulWidget {
@@ -119,6 +119,7 @@ class _ProductScreeState extends State<ProductScree> {
                              cartProduct.pid=product.id;
                              cartProduct.category=product.category;
                              CartModel.of(context).addCartItem(cartProduct);
+                          Navigator.of(context).push(MaterialPageRoute(builder:(context)=>CartScreen()));
                         }else {
                           Navigator.of(context).push(MaterialPageRoute(builder:(context)=>LoginScreen()));
                         }
