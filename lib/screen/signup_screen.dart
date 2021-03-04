@@ -36,7 +36,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           if (model.isLoading)
             return Center(
                 child: CircularProgressIndicator(
-                  backgroundColor: Colors.blue,
+                  backgroundColor: Colors.white,
                 ));
           return Center(
             child: Form(
