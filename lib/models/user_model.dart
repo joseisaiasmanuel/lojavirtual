@@ -95,6 +95,7 @@ class UserModel extends Model {
         .setData(userData);
   }
 
+  // pegar no firebase o usuario actual
   Future<Null> _loadCurrentUser() async {
     if (firebaseUser == null) firebaseUser = await _auth.currentUser();
     if (firebaseUser != null) {
