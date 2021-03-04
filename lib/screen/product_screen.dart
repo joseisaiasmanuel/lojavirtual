@@ -1,6 +1,11 @@
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/material.dart';
+import 'package:loja_virtual/data/cart_product.dart';
 import 'package:loja_virtual/data/products_data.dart';
+import 'package:loja_virtual/models/cart_model.dart';
+import 'package:loja_virtual/models/user_model.dart';
+
+import 'login_screen.dart';
 
 class ProductScree extends StatefulWidget {
   final ProductData product;
@@ -105,9 +110,21 @@ class _ProductScreeState extends State<ProductScree> {
                   SizedBox(
                     height: 44.0,
                     child: RaisedButton(
-                      onPressed: size != null ? () {} : null,
-                      child: Text(
-                        "Adicionar ao Carrinho",
+                      onPressed: size != null ? () {
+                        if(UserModel.of(context).isLoggedIn()){
+                          // adicionar no carrinho
+                          CartProduct cartProduct = CartProduct();
+                             cartProduct.size=size;
+                             cartProduct.quantity=1;
+                             cartProduct.pid=product.id;
+                             cartProduct.category=product.category;
+                             CartModel.of(context).addCartItem(cartProduct);
+                        }else {
+                          Navigator.of(context).push(MaterialPageRoute(builder:(context)=>LoginScreen()));
+                        }
+                      } : null,
+                      child: Text(UserModel.of(context).isLoggedIn() ? "Adicionar ao carrinho":
+                        "Entre para comprar",
                         style: TextStyle(fontSize: 18.0),
                       ),
                       color: colorPrimary,
@@ -118,14 +135,14 @@ class _ProductScreeState extends State<ProductScree> {
                   Text(
                     "descrição",
                     style:
-                    TextStyle(fontSize: 16.0, fontWeight: FontWeight.w500),
+                        TextStyle(fontSize: 16.0, fontWeight: FontWeight.w500),
                   ),
                   Text(
-                      product.description,
-                      style: TextStyle(
-                          fontSize: 16.0,),
+                    product.description,
+                    style: TextStyle(
+                      fontSize: 16.0,
                     ),
-
+                  ),
                 ],
               ),
             )
