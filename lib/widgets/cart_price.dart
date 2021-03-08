@@ -12,6 +12,9 @@ class CartPrice extends StatelessWidget {
         padding: EdgeInsets.all(16.0),
         child: ScopedModelDescendant<CartModel>(
           builder: (context,child,model){
+            double price = model.getProductPrice();
+            double discount = model.getDescount();
+            double shipPrice = model.getShipPrice();
             return Column(
               crossAxisAlignment:CrossAxisAlignment.stretch,
               children: [
@@ -23,7 +26,7 @@ class CartPrice extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children:<Widget> [
-                    Text("Subtotal"),
+                    Text("Subtotal ${price.toStringAsFixed(2)}"),
                     Text("K\Z 0.00")
                   ],
                 ),
@@ -31,7 +34,7 @@ class CartPrice extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children:<Widget> [
-                    Text("Desconto"),
+                    Text("Desconto -${discount.toStringAsFixed(2)}"),
                     Text("K\Z 0.00")
                   ],
                 ),
@@ -39,7 +42,7 @@ class CartPrice extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children:<Widget> [
-                    Text("Entrega"),
+                    Text("Entrega ${shipPrice.toStringAsFixed(2)}"),
                     Text("K\Z 0.00")
                   ],
                 ),
@@ -49,7 +52,7 @@ class CartPrice extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children:<Widget> [
                     Text("Total",style: TextStyle(fontWeight: FontWeight.w500),),
-                    Text("K\Z 0.00",style: TextStyle (color:Theme.of(context).primaryColor ,fontSize:16.0))
+                    Text("K\Z ${(price + shipPrice - discount).toStringAsFixed(2)}",style: TextStyle (color:Theme.of(context).primaryColor ,fontSize:16.0))
                   ],
                 ),
                 SizedBox(height: 12.0,),
