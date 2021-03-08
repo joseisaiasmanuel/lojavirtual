@@ -64,6 +64,32 @@ void decProduct (CartProduct cartProduct){
     this.couponCode= couponCode;
     this.discountPercentage= discountPercentage;
   }
+  // actualizar os preços
+
+  void updatePrice(){
+    notifyListeners();
+  }
+
+ //  subtotal
+  double getProductPrice(){
+    double price = 0.0;
+    for (CartProduct c in products){
+      if(c.productData != null){
+        price +=c.quantity * c.productData.price;
+      }
+      return price;
+    }
+  }
+
+    // desconto
+    double getDescount(){
+      return getProductPrice() * discountPercentage /100;
+    }
+
+    double getShipPrice(){
+      return 9.99;
+    }
+
 
   void _loadCartItems() async{
     QuerySnapshot query = await  Firestore.instance.collection("users").document(user.firebaseUser.uid).collection("cart").getDocuments();
