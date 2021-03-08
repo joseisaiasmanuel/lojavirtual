@@ -9,6 +9,9 @@ class CartModel extends Model{
   UserModel user;
 
   List<CartProduct> products=[];
+
+  String couponCode;
+  int discountPercentage= 0;
   bool isLoading = false;
 
   CartModel(this.user){
@@ -41,6 +44,7 @@ void removeCartItem(CartProduct cartProduct){
 
 }
 
+
 void decProduct (CartProduct cartProduct){
  cartProduct.quantity--;
  Firestore.instance.collection("users").document(user.firebaseUser.uid).collection("cart")
@@ -53,6 +57,12 @@ void decProduct (CartProduct cartProduct){
     Firestore.instance.collection("users").document(user.firebaseUser.uid).collection("cart")
     .document(cartProduct.cid).updateData(cartProduct.toMap());
     notifyListeners();
+  }
+
+  // salvar o desconto
+  void setCoupon (String couponCode, int discountPercentage){
+    this.couponCode= couponCode;
+    this.discountPercentage= discountPercentage;
   }
 
   void _loadCartItems() async{
