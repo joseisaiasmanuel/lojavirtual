@@ -8,6 +8,8 @@ import 'package:loja_virtual/widgets/discount_cart.dart';
 import 'package:loja_virtual/widgets/ship_cart.dart';
 import 'package:scoped_model/scoped_model.dart';
 
+import 'orders_screen.dart';
+
 class CartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -80,7 +82,14 @@ class CartScreen extends StatelessWidget {
                 ),
                 DiscountCart(),
                 ShipCart(),
-                CartPrice((){})
+                CartPrice(()async{
+                  String orderId = await model.finishOrder();
+                  if (orderId != null){
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>OrdersScreen(orderId)));
+
+                  }
+
+                })
               ],
             );
           }
