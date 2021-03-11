@@ -41,6 +41,7 @@ class OrderTile extends StatelessWidget {
                     "Status do Pedido: ${snapshot.data.documentID}",
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
+                  SizedBox(height: 4.0,),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children:<Widget>[
@@ -100,7 +101,7 @@ class OrderTile extends StatelessWidget {
       );
     }else {
       backColor= Colors.green;
-      child = Icon(Icons.check);
+      child = Icon(Icons.check, color:Colors.white);
     }
     return Column (
       children:<Widget>[
